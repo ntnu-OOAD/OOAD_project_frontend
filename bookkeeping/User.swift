@@ -8,8 +8,11 @@
 import Foundation
 
 struct User: Codable, Hashable{
-    let UserID : Int
-    let Username : String
-    let Email : String
-    let CreateDate : String
+    let UserID : String
+    let nickname : String
+    let password : String
+}
+
+struct LoginResponse: Codable, Hashable{
+    let status : String
 }
