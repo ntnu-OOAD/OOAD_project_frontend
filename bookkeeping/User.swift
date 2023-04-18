@@ -16,3 +16,15 @@ struct User: Codable, Hashable{
 struct LoginResponse: Codable, Hashable{
     let status : String
 }
+
+struct Ledger: Codable, Hashable{
+    let LedgerID : Int
+    let OwnerID : Int
+    let LedgerType : String
+    let CreateDate : String
+}
+
+struct GetLedgerResponse: Codable, Hashable{
+    let status : String
+    let ledgers : [Ledger]
+}

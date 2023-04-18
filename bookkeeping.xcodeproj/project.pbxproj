@@ -17,6 +17,9 @@
 		09083D8F29D53F74001EE077 /* bookkeepingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D8E29D53F74001EE077 /* bookkeepingUITests.swift */; };
 		09083D9129D53F74001EE077 /* bookkeepingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D9029D53F74001EE077 /* bookkeepingUITestsLaunchTests.swift */; };
 		09083DA229D574D4001EE077 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083DA129D574D4001EE077 /* User.swift */; };
+		091F1D4B29ED4AB700DF4B56 /* UserLedgersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */; };
+		091F1D4D29EEB51200DF4B56 /* LedgerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D4C29EEB51200DF4B56 /* LedgerDetailView.swift */; };
+		091F1D4F29EEC07500DF4B56 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D4E29EEC07500DF4B56 /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		09083D8E29D53F74001EE077 /* bookkeepingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookkeepingUITests.swift; sourceTree = "<group>"; };
 		09083D9029D53F74001EE077 /* bookkeepingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookkeepingUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		09083DA129D574D4001EE077 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLedgersListView.swift; sourceTree = "<group>"; };
+		091F1D4C29EEB51200DF4B56 /* LedgerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerDetailView.swift; sourceTree = "<group>"; };
+		091F1D4E29EEC07500DF4B56 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 			children = (
 				09083D6D29D53F73001EE077 /* bookkeepingApp.swift */,
 				09083D6F29D53F73001EE077 /* ContentView.swift */,
+				091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */,
+				091F1D4E29EEC07500DF4B56 /* RegisterView.swift */,
+				091F1D4C29EEB51200DF4B56 /* LedgerDetailView.swift */,
 				09083D7129D53F74001EE077 /* Assets.xcassets */,
 				09083D7629D53F74001EE077 /* Persistence.swift */,
 				09083D7B29D53F74001EE077 /* Info.plist */,
@@ -270,9 +279,12 @@
 			files = (
 				09083D7729D53F74001EE077 /* Persistence.swift in Sources */,
 				09083D7029D53F73001EE077 /* ContentView.swift in Sources */,
+				091F1D4B29ED4AB700DF4B56 /* UserLedgersListView.swift in Sources */,
 				09083D7A29D53F74001EE077 /* bookkeeping.xcdatamodeld in Sources */,
 				09083DA229D574D4001EE077 /* User.swift in Sources */,
+				091F1D4F29EEC07500DF4B56 /* RegisterView.swift in Sources */,
 				09083D6E29D53F73001EE077 /* bookkeepingApp.swift in Sources */,
+				091F1D4D29EEB51200DF4B56 /* LedgerDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
