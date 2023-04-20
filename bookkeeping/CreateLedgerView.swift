@@ -36,6 +36,7 @@ struct CreateLedgerView: View {
                         .border (.red, width: CGFloat(wrongUsername))
 //
                     TextField( "LedgerType", text: $ledgertype)
+                        .autocapitalization(.none)
                         .padding ()
                         .frame (width: 300, height: 50) .background (Color.black.opacity (0.05)) .cornerRadius (10)
                         .border (.red, width: CGFloat(wrongPassword))
@@ -60,7 +61,7 @@ struct CreateLedgerView: View {
     }
     
     func createledger (name: String, type: String) {
-        @State var currentuser = GetUserResponse(status: "", user: GetUser(UserID:0,UserName: "", UserNickname: "", password: ""))
+        var currentuser = GetUserResponse(status: "", user: GetUser(UserID:0,UserName: "", UserNickname: "", password: ""))
         guard let url1 = URL(string: "\(API.RootUrl)/users/get_user/") else {
             print("API is down")
             return
@@ -71,7 +72,7 @@ struct CreateLedgerView: View {
         
         URLSession.shared.dataTask(with: request1) { data, response, error in
             if let data = data {
-                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
                 if let response = try? JSONDecoder().decode(GetUserResponse.self, from: data) {
                     DispatchQueue.main.async {
                         currentuser = response
@@ -102,7 +103,7 @@ struct CreateLedgerView: View {
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
-                print("CreateLedgerResponse Response data:", String(data: data, encoding: .utf8) ?? "")
+//                print("CreateLedgerResponse Response data:", String(data: data, encoding: .utf8) ?? "")
                 if let response = try? JSONDecoder().decode(CreateLedgerResponse.self, from: data) {
                     if response.status == "success"{
                         showLoginScreen = true
@@ -124,9 +125,9 @@ struct CreateLedgerView: View {
     }
 }
 
-struct CreateLedgerView_previews: PreviewProvider{
-    static var previews: some View{
-        CreateLedgerView()
-    }
-}
+//struct CreateLedgerView_previews: PreviewProvider{
+//    static var previews: some View{
+//        CreateLedgerView()
+//    }
+//}
 

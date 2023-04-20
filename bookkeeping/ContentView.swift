@@ -50,7 +50,7 @@ struct ContentView: View {
                  isPresented: $showLoginScreen) {
                      UserLedgersListView()
                  }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     func authenticateUser (ID: String, PA: String) {

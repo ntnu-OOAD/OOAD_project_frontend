@@ -16,12 +16,13 @@
 		09083D8529D53F74001EE077 /* bookkeepingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D8429D53F74001EE077 /* bookkeepingTests.swift */; };
 		09083D8F29D53F74001EE077 /* bookkeepingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D8E29D53F74001EE077 /* bookkeepingUITests.swift */; };
 		09083D9129D53F74001EE077 /* bookkeepingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D9029D53F74001EE077 /* bookkeepingUITestsLaunchTests.swift */; };
-		09083DA229D574D4001EE077 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083DA129D574D4001EE077 /* User.swift */; };
+		09083DA229D574D4001EE077 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083DA129D574D4001EE077 /* Models.swift */; };
 		091F1D4B29ED4AB700DF4B56 /* UserLedgersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */; };
 		091F1D4D29EEB51200DF4B56 /* LedgerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D4C29EEB51200DF4B56 /* LedgerDetailView.swift */; };
 		091F1D4F29EEC07500DF4B56 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D4E29EEC07500DF4B56 /* RegisterView.swift */; };
 		091F1D5129F0C10F00DF4B56 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5029F0C10F00DF4B56 /* AppConstants.swift */; };
 		091F1D5429F0C53300DF4B56 /* CreateLedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5329F0C53300DF4B56 /* CreateLedgerView.swift */; };
+		091F1D5629F0E05900DF4B56 /* CreateRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5529F0E05900DF4B56 /* CreateRecordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,12 +56,13 @@
 		09083D8A29D53F74001EE077 /* bookkeepingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookkeepingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		09083D8E29D53F74001EE077 /* bookkeepingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookkeepingUITests.swift; sourceTree = "<group>"; };
 		09083D9029D53F74001EE077 /* bookkeepingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookkeepingUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		09083DA129D574D4001EE077 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		09083DA129D574D4001EE077 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLedgersListView.swift; sourceTree = "<group>"; };
 		091F1D4C29EEB51200DF4B56 /* LedgerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LedgerDetailView.swift; sourceTree = "<group>"; };
 		091F1D4E29EEC07500DF4B56 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		091F1D5029F0C10F00DF4B56 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		091F1D5329F0C53300DF4B56 /* CreateLedgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLedgerView.swift; sourceTree = "<group>"; };
+		091F1D5529F0E05900DF4B56 /* CreateRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				091F1D5029F0C10F00DF4B56 /* AppConstants.swift */,
 				09083D6F29D53F73001EE077 /* ContentView.swift */,
 				091F1D5329F0C53300DF4B56 /* CreateLedgerView.swift */,
+				091F1D5529F0E05900DF4B56 /* CreateRecordView.swift */,
 				091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */,
 				091F1D4E29EEC07500DF4B56 /* RegisterView.swift */,
 				091F1D4C29EEB51200DF4B56 /* LedgerDetailView.swift */,
@@ -123,7 +126,7 @@
 				09083D7B29D53F74001EE077 /* Info.plist */,
 				09083D7829D53F74001EE077 /* bookkeeping.xcdatamodeld */,
 				09083D7329D53F74001EE077 /* Preview Content */,
-				09083DA129D574D4001EE077 /* User.swift */,
+				09083DA129D574D4001EE077 /* Models.swift */,
 			);
 			path = bookkeeping;
 			sourceTree = "<group>";
@@ -286,9 +289,10 @@
 				09083D7729D53F74001EE077 /* Persistence.swift in Sources */,
 				091F1D5129F0C10F00DF4B56 /* AppConstants.swift in Sources */,
 				09083D7029D53F73001EE077 /* ContentView.swift in Sources */,
+				091F1D5629F0E05900DF4B56 /* CreateRecordView.swift in Sources */,
 				091F1D4B29ED4AB700DF4B56 /* UserLedgersListView.swift in Sources */,
 				09083D7A29D53F74001EE077 /* bookkeeping.xcdatamodeld in Sources */,
-				09083DA229D574D4001EE077 /* User.swift in Sources */,
+				09083DA229D574D4001EE077 /* Models.swift in Sources */,
 				091F1D4F29EEC07500DF4B56 /* RegisterView.swift in Sources */,
 				09083D6E29D53F73001EE077 /* bookkeepingApp.swift in Sources */,
 				091F1D4D29EEB51200DF4B56 /* LedgerDetailView.swift in Sources */,

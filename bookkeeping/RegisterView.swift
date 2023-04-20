@@ -66,7 +66,7 @@ struct RegisterView: View {
                  isPresented: $showLoginScreen) {
                      ContentView()
                  }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     func registerUser (ID: String,NN: String, PA: String) {

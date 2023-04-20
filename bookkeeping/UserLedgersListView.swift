@@ -38,7 +38,7 @@ struct UserLedgersListView: View {
                  isPresented: $showAdd) {
                      CreateLedgerView()
                  }
-        }
+        }.navigationBarBackButtonHidden(true)
     }
     
     func loadLedger() {
@@ -50,9 +50,10 @@ struct UserLedgersListView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
+        
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
-                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
                 if let response = try? JSONDecoder().decode(GetLedgerResponse.self, from: data) {
                     DispatchQueue.main.async {
                         self.ledgers = response

@@ -52,3 +52,32 @@ struct CreateLedgerResponse: Codable, Hashable{
     let status : String
     let ledger : Ledger
 }
+
+struct GetRecords: Codable,Hashable{
+    let RecordID : Int
+    let LedgerID : Int
+    let ItemName : String
+    let ItemType : String
+    let Cost : String
+    let Payby : Int
+    let BoughtDate : String
+}
+
+struct CreateRecord: Codable,Hashable{
+    let LedgerID : Int
+    let ItemName : String
+    let ItemType : String
+    let Cost : Int
+    let Payby : Int
+    let BoughtDate : String
+}
+
+struct GetRecordsResponse: Codable, Hashable{
+    let status : String
+    let records : [GetRecords]
+}
+
+struct CreateRecordResponse: Codable, Hashable{
+    let status : String
+    let record : GetRecords
+}
