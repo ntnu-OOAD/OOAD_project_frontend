@@ -32,7 +32,7 @@ struct RegisterView: View {
                         .bold ()
                         .padding ()
                     
-                    TextField("UserID", text: $username)
+                    TextField("UserName", text: $username)
                         .autocapitalization(.none)
                         .padding ()
                         .frame (width: 300, height: 50) .background (Color.black.opacity (0.05))
@@ -71,7 +71,7 @@ struct RegisterView: View {
     
     func registerUser (ID: String,NN: String, PA: String) {
         
-        guard let url = URL(string: "http://127.0.0.1:8000/api/users/register/") else {
+        guard let url = URL(string: "\(API.RootUrl)/users/register/") else {
             print("API is down")
             return
         }
@@ -82,7 +82,7 @@ struct RegisterView: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let encoder = JSONEncoder()
-        let user = User(UserID: ID, nickname: NN, password: PA)
+        let user = User(UserName: ID, UserNickname: NN, password: PA)
         let data = try? encoder.encode(user)
         request.httpBody = data
 
@@ -112,11 +112,11 @@ struct RegisterView: View {
 
 
 
-struct Register_previews: PreviewProvider{
-    static var previews: some View{
-        RegisterView()
-    }
-}
+//struct Register_previews: PreviewProvider{
+//    static var previews: some View{
+//        RegisterView()
+//    }
+//}
 
 
 

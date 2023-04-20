@@ -17,8 +17,7 @@ struct UserLedgersListView: View {
             List{
                 ForEach(ledgers.ledgers, id: \.self) { ledger in
                     HStack {
-                        
-                        Text("ID: \(ledger.LedgerID)")
+                        Text("\(ledger.LedgerName)")
                         Spacer()
                         Text("Type: \(ledger.LedgerType)")
                         NavigationLink(destination: LedgerDetailView(ledger: ledger),label: {Text("")})
@@ -35,11 +34,15 @@ struct UserLedgersListView: View {
                             }
             }
             .listStyle(PlainListStyle())
+            .navigationDestination(
+                 isPresented: $showAdd) {
+                     CreateLedgerView()
+                 }
         }
     }
     
     func loadLedger() {
-        guard let url = URL(string: "http://127.0.0.1:8000/api/ledgers/get_ledgers/") else {
+        guard let url = URL(string: "\(API.RootUrl)/ledgers/get_ledgers/") else {
             print("API is down")
             return
         }

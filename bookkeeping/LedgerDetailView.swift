@@ -13,13 +13,13 @@ struct LedgerDetailView: View{
         NavigationView{
             List{
                 HStack{
-                    Text("ID: \(ledger.LedgerID)")
+                    Text("\(ledger.LedgerName)")
                 }
                 Section {
                     Text("Type : \(ledger.LedgerType)")
                     Text("CreateDate : \(ledger.CreateDate)")
                 }
-            }.navigationTitle("\(ledger.LedgerID)")
+            }.navigationTitle("\(ledger.LedgerName)")
         }
     }
 }
