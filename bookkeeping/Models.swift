@@ -81,3 +81,14 @@ struct CreateRecordResponse: Codable, Hashable{
     let status : String
     let record : GetRecords
 }
+
+struct LedgerAccess: Codable,Hashable{
+    let LedgerID : Int
+    let UserID : Int
+    let AccessLevel : String
+}
+
+struct CreateLedgerAccessResponse: Codable, Hashable{
+    let status : String
+    let ledger_access : LedgerAccess
+}

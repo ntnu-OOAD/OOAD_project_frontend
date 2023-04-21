@@ -11,6 +11,7 @@ struct LedgerDetailView: View {
     @State var ledger : Ledger
     @State var isActive = false
     @State var showAdd = false
+    @State var addMember = false
     
     @State var records = GetRecordsResponse(status: "", records: [])
     var body: some View {
@@ -29,11 +30,6 @@ struct LedgerDetailView: View {
             }
             .onAppear(perform: loadRecords)
             .navigationTitle("Records")
-            .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button(action: {showAdd.toggle()}, label: {Image(systemName: "plus.circle")})
-                            }
-            }
             .listStyle(PlainListStyle())
             .navigationDestination(
                  isPresented: $showAdd) {
@@ -49,8 +45,22 @@ struct LedgerDetailView: View {
                         Text("Ledger List")
                             .foregroundColor(.blue)
                     }
-                })
+                }),
+                trailing: Menu {
+                            Button(action: { showAdd.toggle() }) {
+                                Label("Add record", systemImage: "plus.circle")
+                            }
+                    Button(action: { addMember.toggle() }) {
+                                Label("Add member", systemImage: "person.crop.circle.badge.plus")
+                            }
+                        } label: {
+                            Label("Menu", systemImage: "ellipsis.circle")
+                        }
             )
+            .navigationDestination(
+                 isPresented: $addMember) {
+                     AddMemberView(ledger: ledger)
+                 }
             .navigationDestination(
                  isPresented: $isActive) {
                      UserLedgersListView()

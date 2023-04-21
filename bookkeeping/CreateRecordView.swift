@@ -151,10 +151,6 @@ struct CreateRecordView: View {
             }
         }.resume()
         
-        
-
-       
-
     }
     
     
