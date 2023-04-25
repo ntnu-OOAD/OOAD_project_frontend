@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct LoginView: View {
     @State var users = [User]()
     @State var username = ""
     @State var password = ""
@@ -48,7 +48,7 @@ struct ContentView: View {
             }
             .navigationDestination(
                  isPresented: $showLoginScreen) {
-                     UserLedgersListView()
+                     BottomNavView(selectedTab: 0)
                  }
         }.navigationBarBackButtonHidden(true)
     }
@@ -94,8 +94,8 @@ struct ContentView: View {
     }
 }
 
-//struct ContentView_previews: PreviewProvider{
-//    static var previews: some View{
-//        ContentView()
-//    }
-//}
+struct ContentView_previews: PreviewProvider{
+    static var previews: some View{
+        LoginView()
+    }
+}

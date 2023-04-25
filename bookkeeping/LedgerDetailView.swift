@@ -40,9 +40,9 @@ struct LedgerDetailView: View {
                     isActive = true // add this
                 }, label: {
                     HStack {
-                        Image(systemName: "text.book.closed")
+                        Image(systemName: "house")
                             .foregroundColor(.blue)
-                        Text("Ledger List")
+                        Text("回首頁")
                             .foregroundColor(.blue)
                     }
                 }),
@@ -63,7 +63,7 @@ struct LedgerDetailView: View {
                  }
             .navigationDestination(
                  isPresented: $isActive) {
-                     UserLedgersListView()
+                     BottomNavView(selectedTab: 0)
                  }
         }.navigationBarBackButtonHidden(true)
     }

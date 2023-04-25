@@ -34,7 +34,7 @@ struct Ledger: Codable, Hashable{
     let LedgerName : String
     let OwnerID : Int
     let LedgerType : String
-    let CreateDate : String
+    let AccessLevel : String
 }
 
 struct CreateLedger: Codable, Hashable{
@@ -45,7 +45,7 @@ struct CreateLedger: Codable, Hashable{
 
 struct GetLedgerResponse: Codable, Hashable{
     let status : String
-    let ledgers : [Ledger]
+    let ledger_with_access : [Ledger]
 }
 
 struct CreateLedgerResponse: Codable, Hashable{

@@ -1,13 +1,14 @@
 //
-//  UserLedgersListView.swift
+//  CreateRecordLedgerListView.swift
 //  bookkeeping
 //
-//  Created by 張凱博 on 2023/4/17.
+//  Created by 張凱博 on 2023/4/25.
 //
 
+import Foundation
 import SwiftUI
 
-struct UserLedgersListView: View {
+struct CreateRecordLedgersListView: View {
     
     @State var showAdd = false
 
@@ -17,28 +18,22 @@ struct UserLedgersListView: View {
         NavigationView{
             List{
                 ForEach(ledgers.ledger_with_access, id: \.self) { ledger in
-                    HStack {
-                        Text("\(ledger.LedgerName)")
-                        Spacer()
-                        Text("Type: \(ledger.LedgerType)")
-                        NavigationLink(destination: LedgerDetailView(ledger: ledger),label: {Text("")})
+                    if ledger.AccessLevel != "Viewer"{
+                        HStack {
+                            Text("\(ledger.LedgerName)")
+                            Spacer()
+                            Text("Type: \(ledger.LedgerType)")
+                            NavigationLink(destination: CreateRecordView(ledger: ledger),label: {Text("")})
+                        }
                     }
+                    
                 }
                 
                 
             }
             .onAppear(perform: loadLedger)
-            .navigationTitle("帳本列表")
-            .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button(action: {showAdd.toggle()}, label: {Image(systemName: "plus.circle")})
-                            }
-            }
+            .navigationTitle("選擇帳本")
             .listStyle(PlainListStyle())
-            .navigationDestination(
-                 isPresented: $showAdd) {
-                     CreateLedgerView()
-                 }
         }.navigationBarBackButtonHidden(true)
         
     }
@@ -70,9 +65,3 @@ struct UserLedgersListView: View {
         }.resume()
     }
 }
-
-//struct ContentView_previews: PreviewProvider{
-//    static var previews: some View{
-//        UserLedgersListView()
-//    }
-//}

@@ -57,14 +57,14 @@ struct RegisterView: View {
                     .background (Color.green)
                     .cornerRadius (10)
                     
-                    NavigationLink(destination: ContentView(), label: {Text("Back to Login")})
+                    NavigationLink(destination: LoginView(), label: {Text("Back to Login")})
                     
                 }
                 
             }
             .navigationDestination(
                  isPresented: $showLoginScreen) {
-                     ContentView()
+                     LoginView()
                  }
         }.navigationBarBackButtonHidden(true)
     }

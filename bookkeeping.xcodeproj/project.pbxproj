@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09083D6E29D53F73001EE077 /* bookkeepingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D6D29D53F73001EE077 /* bookkeepingApp.swift */; };
-		09083D7029D53F73001EE077 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D6F29D53F73001EE077 /* ContentView.swift */; };
+		09083D7029D53F73001EE077 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D6F29D53F73001EE077 /* LoginView.swift */; };
 		09083D7229D53F74001EE077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09083D7129D53F74001EE077 /* Assets.xcassets */; };
 		09083D7529D53F74001EE077 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09083D7429D53F74001EE077 /* Preview Assets.xcassets */; };
 		09083D7729D53F74001EE077 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09083D7629D53F74001EE077 /* Persistence.swift */; };
@@ -24,6 +24,8 @@
 		091F1D5429F0C53300DF4B56 /* CreateLedgerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5329F0C53300DF4B56 /* CreateLedgerView.swift */; };
 		091F1D5629F0E05900DF4B56 /* CreateRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5529F0E05900DF4B56 /* CreateRecordView.swift */; };
 		091F1D5829F2C25500DF4B56 /* AddMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5729F2C25500DF4B56 /* AddMemberView.swift */; };
+		091F1D5A29F7EF9400DF4B56 /* BottomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5929F7EF9400DF4B56 /* BottomNavView.swift */; };
+		091F1D5C29F7F91800DF4B56 /* CreateRecordLedgerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5B29F7F91800DF4B56 /* CreateRecordLedgerListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +48,7 @@
 /* Begin PBXFileReference section */
 		09083D6A29D53F73001EE077 /* bookkeeping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookkeeping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09083D6D29D53F73001EE077 /* bookkeepingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookkeepingApp.swift; sourceTree = "<group>"; };
-		09083D6F29D53F73001EE077 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		09083D6F29D53F73001EE077 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		09083D7129D53F74001EE077 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09083D7429D53F74001EE077 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09083D7629D53F74001EE077 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -65,6 +67,8 @@
 		091F1D5329F0C53300DF4B56 /* CreateLedgerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLedgerView.swift; sourceTree = "<group>"; };
 		091F1D5529F0E05900DF4B56 /* CreateRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordView.swift; sourceTree = "<group>"; };
 		091F1D5729F2C25500DF4B56 /* AddMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberView.swift; sourceTree = "<group>"; };
+		091F1D5929F7EF9400DF4B56 /* BottomNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavView.swift; sourceTree = "<group>"; };
+		091F1D5B29F7F91800DF4B56 /* CreateRecordLedgerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordLedgerListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +121,13 @@
 			children = (
 				09083D6D29D53F73001EE077 /* bookkeepingApp.swift */,
 				091F1D5029F0C10F00DF4B56 /* AppConstants.swift */,
-				09083D6F29D53F73001EE077 /* ContentView.swift */,
+				09083D6F29D53F73001EE077 /* LoginView.swift */,
 				091F1D5329F0C53300DF4B56 /* CreateLedgerView.swift */,
 				091F1D5529F0E05900DF4B56 /* CreateRecordView.swift */,
 				091F1D5729F2C25500DF4B56 /* AddMemberView.swift */,
 				091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */,
+				091F1D5B29F7F91800DF4B56 /* CreateRecordLedgerListView.swift */,
+				091F1D5929F7EF9400DF4B56 /* BottomNavView.swift */,
 				091F1D4E29EEC07500DF4B56 /* RegisterView.swift */,
 				091F1D4C29EEB51200DF4B56 /* LedgerDetailView.swift */,
 				09083D7129D53F74001EE077 /* Assets.xcassets */,
@@ -291,7 +297,9 @@
 			files = (
 				09083D7729D53F74001EE077 /* Persistence.swift in Sources */,
 				091F1D5129F0C10F00DF4B56 /* AppConstants.swift in Sources */,
-				09083D7029D53F73001EE077 /* ContentView.swift in Sources */,
+				091F1D5C29F7F91800DF4B56 /* CreateRecordLedgerListView.swift in Sources */,
+				091F1D5A29F7EF9400DF4B56 /* BottomNavView.swift in Sources */,
+				09083D7029D53F73001EE077 /* LoginView.swift in Sources */,
 				091F1D5629F0E05900DF4B56 /* CreateRecordView.swift in Sources */,
 				091F1D4B29ED4AB700DF4B56 /* UserLedgersListView.swift in Sources */,
 				09083D7A29D53F74001EE077 /* bookkeeping.xcdatamodeld in Sources */,
