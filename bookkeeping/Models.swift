@@ -29,6 +29,10 @@ struct LoginResponse: Codable, Hashable{
     let status : String
 }
 
+struct LogoutResponse: Codable, Hashable{
+    let status : String
+}
+
 struct Ledger: Codable, Hashable{
     let LedgerID : Int
     let LedgerName : String
@@ -91,4 +95,13 @@ struct LedgerAccess: Codable,Hashable{
 struct CreateLedgerAccessResponse: Codable, Hashable{
     let status : String
     let ledger_access : LedgerAccess
+}
+
+struct ChangeNickname: Codable, Hashable{
+    let UserNickname : String
+}
+
+struct ChangePassword: Codable, Hashable{
+    let old_password : String
+    let new_password : String
 }

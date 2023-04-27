@@ -41,7 +41,7 @@ struct BottomNavView: View {
                 }
                 .tag(3)
             
-            Text("Tab 5")
+            UserInfoView()
                 .tabItem {
                     Image(systemName: "person.circle")
                     Text("個人資料")
