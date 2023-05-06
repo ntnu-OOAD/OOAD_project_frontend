@@ -55,13 +55,13 @@ struct CreateLedgerView: View {
             }
             .navigationDestination(
                  isPresented: $showLoginScreen) {
-                     UserLedgersListView()
+                     BottomNavView(selectedTab: 0)
                  }
         }
     }
     
     func createledger (name: String, type: String) {
-        var currentuser = GetUserResponse(status: "", user: GetUser(UserID:0,UserName: "", UserNickname: "", password: ""))
+        var currentuser = GetUserResponse(status: "",message: "", user: GetUser(UserID:0,UserName: "", UserNickname: ""))
         guard let url1 = URL(string: "\(API.RootUrl)/users/get_user/") else {
             print("API is down")
             return

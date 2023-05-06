@@ -12,7 +12,7 @@ struct CreateRecordLedgersListView: View {
     
     @State var showAdd = false
 
-    @State var ledgers = GetLedgerResponse(status: "", ledger_with_access: [])
+    @State var ledgers = GetLedgerResponse(status: "",message: "", ledger_with_access: [])
     var body: some View {
         
         NavigationView{

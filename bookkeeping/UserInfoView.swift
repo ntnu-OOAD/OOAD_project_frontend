@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct UserInfoView: View {
-    @State var user = GetUser(UserID: 0, UserName: "", UserNickname: "", password: "")
+    @State var user = GetUser(UserID: 0, UserName: "", UserNickname: "")
     @State var nickname = ""
     @State var oldpassword = ""
     @State var newpassword = ""
@@ -71,10 +71,12 @@ struct UserInfoView: View {
                     Button("登出") {
                         logout()
                     }
+                    
                     .foregroundColor(.white)
                     .frame (width: 300, height: 50)
                     .background (Color.red)
                     .cornerRadius (10)
+                    .padding (.top,80)
                     
                     
                 }
@@ -138,7 +140,7 @@ struct UserInfoView: View {
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
-                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
                 if let response = try? JSONDecoder().decode(LoginResponse.self, from: data) {
                     if response.status == "success"{
                         showUserScreen = true
@@ -176,7 +178,7 @@ struct UserInfoView: View {
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
-                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
                 if let response = try? JSONDecoder().decode(LoginResponse.self, from: data) {
                     if response.status == "success"{
                         showUserScreen = true
@@ -233,9 +235,9 @@ struct UserInfoView: View {
     }
 }
 
-//struct CreateLedgerView_previews: PreviewProvider{
+//struct UserInfoView_previews: PreviewProvider{
 //    static var previews: some View{
-//        CreateLedgerView()
+//        UserInfoView()
 //    }
 //}
 

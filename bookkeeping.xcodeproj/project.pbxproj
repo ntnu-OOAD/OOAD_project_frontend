@@ -27,6 +27,7 @@
 		091F1D5A29F7EF9400DF4B56 /* BottomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5929F7EF9400DF4B56 /* BottomNavView.swift */; };
 		091F1D5C29F7F91800DF4B56 /* CreateRecordLedgerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5B29F7F91800DF4B56 /* CreateRecordLedgerListView.swift */; };
 		091F1D5E29FA16A000DF4B56 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5D29FA16A000DF4B56 /* UserInfoView.swift */; };
+		091F1D602A05500E00DF4B56 /* EditMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091F1D5F2A05500E00DF4B56 /* EditMemberView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		091F1D5929F7EF9400DF4B56 /* BottomNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavView.swift; sourceTree = "<group>"; };
 		091F1D5B29F7F91800DF4B56 /* CreateRecordLedgerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordLedgerListView.swift; sourceTree = "<group>"; };
 		091F1D5D29FA16A000DF4B56 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		091F1D5F2A05500E00DF4B56 /* EditMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemberView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				09083D6F29D53F73001EE077 /* LoginView.swift */,
 				091F1D5329F0C53300DF4B56 /* CreateLedgerView.swift */,
 				091F1D5529F0E05900DF4B56 /* CreateRecordView.swift */,
+				091F1D5F2A05500E00DF4B56 /* EditMemberView.swift */,
 				091F1D5729F2C25500DF4B56 /* AddMemberView.swift */,
 				091F1D5D29FA16A000DF4B56 /* UserInfoView.swift */,
 				091F1D4A29ED4AB700DF4B56 /* UserLedgersListView.swift */,
@@ -306,6 +309,7 @@
 				091F1D5629F0E05900DF4B56 /* CreateRecordView.swift in Sources */,
 				091F1D4B29ED4AB700DF4B56 /* UserLedgersListView.swift in Sources */,
 				09083D7A29D53F74001EE077 /* bookkeeping.xcdatamodeld in Sources */,
+				091F1D602A05500E00DF4B56 /* EditMemberView.swift in Sources */,
 				091F1D5829F2C25500DF4B56 /* AddMemberView.swift in Sources */,
 				091F1D5E29FA16A000DF4B56 /* UserInfoView.swift in Sources */,
 				09083DA229D574D4001EE077 /* Models.swift in Sources */,

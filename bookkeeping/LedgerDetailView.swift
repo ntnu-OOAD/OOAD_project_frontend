@@ -51,7 +51,7 @@ struct LedgerDetailView: View {
                                 Label("Add record", systemImage: "plus.circle")
                             }
                     Button(action: { addMember.toggle() }) {
-                                Label("Add member", systemImage: "person.crop.circle.badge.plus")
+                                Label("Edit member", systemImage: "person.2.badge.gearshape.fill")
                             }
                         } label: {
                             Label("Menu", systemImage: "ellipsis.circle")
@@ -59,7 +59,7 @@ struct LedgerDetailView: View {
             )
             .navigationDestination(
                  isPresented: $addMember) {
-                     AddMemberView(ledger: ledger)
+                     EditMemberView(ledger: ledger)
                  }
             .navigationDestination(
                  isPresented: $isActive) {

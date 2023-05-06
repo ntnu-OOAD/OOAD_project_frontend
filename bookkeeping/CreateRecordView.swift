@@ -16,6 +16,8 @@ struct CreateRecordView: View {
     @State var wrongUsername = 0
     @State var wrongPassword = 0
     @State var showLoginScreen = false
+    @State var selectedMembers = Set<Int>()
+    @State var members: [LedgerInfo] = []
     
     var body: some View {
         NavigationStack{
@@ -57,8 +59,43 @@ struct CreateRecordView: View {
                             displayedComponents: [.date , .hourAndMinute]
                         )
                     
-                    
-//
+                    VStack(alignment: .leading) {
+                        Text("Members")
+                            .font(.headline)
+                        ForEach($members, id: \.self) { member in
+                            Button(action: {
+                                if selectedMembers.contains(member.UserID.wrappedValue) {
+                                    selectedMembers.remove(member.UserID.wrappedValue)
+                                } else {
+                                    selectedMembers.insert(member.UserID.wrappedValue)
+                                }
+                            }) {
+                                HStack {
+                                    if selectedMembers.contains(member.UserID.wrappedValue) {
+                                        Image(systemName: "checkmark.square")
+                                            .foregroundColor(.blue)
+                                    } else {
+                                        Image(systemName: "square")
+                                    }
+                                    Text("\(member.UserNickname.wrappedValue)")
+                                        .font(.body)
+                                    TextField("Enter number", text: Binding(
+                                        get: {
+                                            String(member.UserID.wrappedValue)
+                                        },
+                                        set: {
+                                            if let value = Int($0) {
+                                                member.UserID.wrappedValue = value
+                                            }
+                                        }
+                                    ))
+                                    .keyboardType(.numberPad)
+                                    .frame(width: 100)
+                            }
+                            }
+                        }
+                    }.padding()
+
                     Button("Create") {
                         createrecord(name: itemname, type: itemtype, cost: cost,date:date)
                     }
@@ -75,12 +112,41 @@ struct CreateRecordView: View {
                  isPresented: $showLoginScreen) {
                      LedgerDetailView(ledger: ledger)
                  }
+        }.onAppear {
+            getMembers()
         }
+    }
+    
+    func getMembers() {
+        guard let url = URL(string: "\(API.RootUrl)/ledgers/get_ledger_info/?LedgerID=\(ledger.LedgerID)&with_access_level=true") else {
+            print("API is down")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+                if let response = try? JSONDecoder().decode(GetLedgerInfoResponse.self, from: data) {
+                    DispatchQueue.main.async {
+                        self.members = response.ledger_with_access.users_access_list
+                    }
+                    return
+                } else {
+                    print("Error decoding response data.")
+                }
+            } else {
+                print("No data received.")
+            }
+        }.resume()
     }
     
     func createrecord (name: String, type: String, cost:Int, date:Date) {
         
-        var currentuser1 = GetUserResponse(status: "", user: GetUser(UserID:0,UserName: "", UserNickname: "", password: ""))
+        var currentuser1 = GetUserResponse(status: "",message: "", user: GetUser(UserID:0,UserName: "", UserNickname: ""))
         guard let url1 = URL(string: "\(API.RootUrl)/users/get_user/") else {
             print("API is down")
             return
@@ -91,7 +157,7 @@ struct CreateRecordView: View {
 
         URLSession.shared.dataTask(with: request1) { data, response, error in
             if let data = data {
-//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+                print("Response data:", String(data: data, encoding: .utf8) ?? "")
                 if let response = try? JSONDecoder().decode(GetUserResponse.self, from: data) {
                     DispatchQueue.main.async {
                         currentuser1 = response
@@ -106,7 +172,7 @@ struct CreateRecordView: View {
                         request.httpMethod = "POST"
                         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                         
-                        let outputFormat = "yyyy-MM-dd'T'HH:mm"
+                        let outputFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
                         let outputTimezone = TimeZone.current
                         let outputDateFormatter = DateFormatter()
                         outputDateFormatter.dateFormat = outputFormat
@@ -118,6 +184,7 @@ struct CreateRecordView: View {
                         
                         
                         let record = CreateRecord(LedgerID: ledger.LedgerID, ItemName: name, ItemType: type, Cost: cost, Payby: currentuser1.user.UserID, BoughtDate: outputString)
+//                        print(record)
                         let data = try? encoder.encode(record)
                         request.httpBody = data
 

@@ -8,100 +8,138 @@
 import Foundation
 
 struct User: Codable, Hashable{
-    let UserName : String
-    let UserNickname : String
-    let password : String
+    var UserName : String
+    var UserNickname : String
+    var password : String
 }
 
 struct GetUser: Codable, Hashable{
-    let UserID : Int
-    let UserName : String
-    let UserNickname : String
-    let password : String
+    var UserID : Int
+    var UserName : String
+    var UserNickname : String
 }
 
 struct GetUserResponse: Codable, Hashable{
-    let status : String
-    let user : GetUser
+    var status : String
+    var message : String
+    var user : GetUser
 }
 
 struct LoginResponse: Codable, Hashable{
-    let status : String
+    var status : String
 }
 
 struct LogoutResponse: Codable, Hashable{
-    let status : String
+    var status : String
 }
 
 struct Ledger: Codable, Hashable{
-    let LedgerID : Int
-    let LedgerName : String
-    let OwnerID : Int
-    let LedgerType : String
-    let AccessLevel : String
+    var LedgerID : Int
+    var LedgerName : String
+    var OwnerID : Int
+    var LedgerType : String
+    var AccessLevel : String
 }
 
 struct CreateLedger: Codable, Hashable{
-    let LedgerName : String
-    let OwnerID : Int
-    let LedgerType : String
+    var LedgerName : String
+    var OwnerID : Int
+    var LedgerType : String
 }
 
 struct GetLedgerResponse: Codable, Hashable{
-    let status : String
-    let ledger_with_access : [Ledger]
+    var status : String
+    var message : String
+    var ledger_with_access : [Ledger]
 }
 
 struct CreateLedgerResponse: Codable, Hashable{
-    let status : String
-    let ledger : Ledger
+    var status : String
+    var message : String
+    var ledger : LedgerInfoLedger
+}
+
+struct DeleteLedgerResponse: Codable, Hashable{
+    var status : String
+    var message : String
+    var ledger : LedgerInfoLedger?
+}
+
+struct DeleteLedger: Codable, Hashable{
+    var LedgerID : Int
 }
 
 struct GetRecords: Codable,Hashable{
-    let RecordID : Int
-    let LedgerID : Int
-    let ItemName : String
-    let ItemType : String
-    let Cost : String
-    let Payby : Int
-    let BoughtDate : String
+    var RecordID : Int
+    var LedgerID : Int
+    var ItemName : String
+    var ItemType : String
+    var Cost : String
+    var Payby : Int
+    var BoughtDate : String
 }
 
 struct CreateRecord: Codable,Hashable{
-    let LedgerID : Int
-    let ItemName : String
-    let ItemType : String
-    let Cost : Int
-    let Payby : Int
-    let BoughtDate : String
+    var LedgerID : Int
+    var ItemName : String
+    var ItemType : String
+    var Cost : Int
+    var Payby : Int
+    var BoughtDate : String
 }
 
 struct GetRecordsResponse: Codable, Hashable{
-    let status : String
-    let records : [GetRecords]
+    var status : String
+    var records : [GetRecords]
 }
 
 struct CreateRecordResponse: Codable, Hashable{
-    let status : String
-    let record : GetRecords
+    var status : String
+    var record : GetRecords
 }
 
 struct LedgerAccess: Codable,Hashable{
-    let LedgerID : Int
-    let UserID : Int
-    let AccessLevel : String
+    var LedgerID : Int
+    var UserID : Int
+    var AccessLevel : String
 }
 
 struct CreateLedgerAccessResponse: Codable, Hashable{
-    let status : String
-    let ledger_access : LedgerAccess
+    var status : String
+    var ledger_access : LedgerAccess
 }
 
 struct ChangeNickname: Codable, Hashable{
-    let UserNickname : String
+    var UserNickname : String
 }
 
 struct ChangePassword: Codable, Hashable{
-    let old_password : String
-    let new_password : String
+    var old_password : String
+    var new_password : String
+}
+
+struct LedgerInfo: Codable, Hashable{
+    var UserID : Int
+    var AccessLevel : String
+    var UserName : String
+    var UserNickname : String
+}
+
+struct LedgerInfoLedger: Codable, Hashable{
+    var LedgerID : Int
+    var LedgerName : String
+    var OwnerID : Int
+    var LedgerType : String
+    var CreateDate : String
+}
+
+struct LedgerWithAccess: Codable, Hashable{
+    var ledger : LedgerInfoLedger
+    var users_access_list : [LedgerInfo]
+}
+
+struct GetLedgerInfoResponse: Codable, Hashable{
+    var status : String
+    var message : String
+    var ledger_with_access:LedgerWithAccess
 }
