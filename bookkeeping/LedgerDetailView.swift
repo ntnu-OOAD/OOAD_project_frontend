@@ -22,9 +22,9 @@ struct LedgerDetailView: View {
                         Text("\(record.ItemName)")
                         Spacer()
                         Text("Cost: \(record.Cost)")
-//                        NavigationLink(destination: LedgerDetailView(ledger: ledger),label: {Text("")})
+                        NavigationLink(destination: RecordDetailView(record:record),label: {Text("")})
                     }
-                }
+                }.onDelete(perform: deleteRecord)
                 
                 
             }
@@ -94,7 +94,44 @@ struct LedgerDetailView: View {
         }.resume()
     }
     
-    
+    func deleteRecord(at offsets: IndexSet) {
+//        print(offsets.map { ledgers.ledger_with_access[$0].LedgerID }[0])
+        // Delete the member from your API here, if necessary
+        guard let url = URL(string: "\(API.RootUrl)/records/delete_record/") else {
+            print("API is down")
+            return
+        }
+
+        // Create a JSON encoder
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let encoder = JSONEncoder()
+        let record = DeleteRecord(RecordID: offsets.map { records.records[$0].RecordID}[0])
+        let data = try? encoder.encode(record)
+        request.httpBody = data
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+//                print("CreateLedgerResponse Response data:", String(data: data, encoding: .utf8) ?? "")
+                if let response = try? JSONDecoder().decode(DeleteLedgerResponse.self, from: data) {
+                    if response.status == "success"{
+//                        showLoginScreen = true
+                    }
+                    else{
+                    }
+                    return
+                } else {
+//                    print("Error decoding response data.")
+                }
+            } else {
+                print("No data received.")
+            }
+        }.resume()
+        
+        records.records.remove(atOffsets: offsets)
+    }
 
 }
 

@@ -88,6 +88,10 @@ struct CreateRecord: Codable,Hashable{
     var BoughtDate : String
 }
 
+struct DeleteRecord: Codable, Hashable{
+    var RecordID : Int
+}
+
 struct GetRecordsResponse: Codable, Hashable{
     var status : String
     var records : [GetRecords]

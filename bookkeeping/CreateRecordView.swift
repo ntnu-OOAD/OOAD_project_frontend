@@ -157,7 +157,7 @@ struct CreateRecordView: View {
 
         URLSession.shared.dataTask(with: request1) { data, response, error in
             if let data = data {
-                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
                 if let response = try? JSONDecoder().decode(GetUserResponse.self, from: data) {
                     DispatchQueue.main.async {
                         currentuser1 = response
@@ -190,7 +190,7 @@ struct CreateRecordView: View {
 
                         URLSession.shared.dataTask(with: request) { data, response, error in
                             if let data = data {
-                                print("CreateRecordResponse Response data:", String(data: data, encoding: .utf8) ?? "")
+//                                print("CreateRecordResponse Response data:", String(data: data, encoding: .utf8) ?? "")
                                 if let response = try? JSONDecoder().decode(CreateRecordResponse.self, from: data) {
                                     if response.status == "success"{
                                         showLoginScreen = true
