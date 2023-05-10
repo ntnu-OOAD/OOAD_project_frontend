@@ -36,7 +36,7 @@ struct EditMemberView: View {
                  isPresented: $showAdd) {
                      AddMemberView(ledger: ledger)
                  }
-        }.navigationBarBackButtonHidden(true)
+        }
     }
     
     func getMembers() {

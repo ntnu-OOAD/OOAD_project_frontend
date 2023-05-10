@@ -34,8 +34,7 @@ struct AddMemberView: View {
                         .frame (width: 300, height: 50) .background (Color.black.opacity (0.05))
                         .cornerRadius (10)
                         .border (.red, width: CGFloat(wrongUsername))
-                    
-                    Text("Selected AccessLevel: \(selection)")
+
 
                     Picker("Select a paint color", selection: $selection) {
                                     ForEach(roles, id: \.self) {

@@ -22,7 +22,7 @@ struct LedgerDetailView: View {
                         Text("\(record.ItemName)")
                         Spacer()
                         Text("Cost: \(record.Cost)")
-                        NavigationLink(destination: RecordDetailView(record:record),label: {Text("")})
+                        NavigationLink(destination: RecordDetailView(record:record,ledger: ledger),label: {Text("")})
                     }
                 }.onDelete(perform: deleteRecord)
                 

@@ -10,93 +10,99 @@ import SwiftUI
 struct CreateRecordView: View {
     @State var ledger:Ledger
     @State var itemname = ""
-    @State var itemtype = ""
-    @State var cost = 0
+    @State var itemtype = "食"
+    @State var cost = Int()
     @State var date = Date()
     @State var wrongUsername = 0
     @State var wrongPassword = 0
     @State var showLoginScreen = false
     @State var selectedMembers = Set<Int>()
     @State var members: [LedgerInfo] = []
+    let options = ["食", "衣", "住","行", "育", "樂","其他"]
     
     var body: some View {
         NavigationStack{
             ZStack{
-//                Color.blue.ignoresSafeArea()
-//                Circle().scale(1.7).foregroundColor(.white.opacity(0.15))
-//                Circle().scale(1.35).foregroundColor(.white)
                 
                 VStack {
-                    Text ("Create Record" )
-                        .font (.largeTitle)
-                        .bold ()
-                        .padding ()
-                    
-                    TextField("ItemName", text: $itemname)
-                        .autocapitalization(.none)
-                        .padding ()
-                        .frame (width: 300, height: 50) .background (Color.black.opacity (0.05))
-                        .cornerRadius (10)
-                        .border (.red, width: CGFloat(wrongUsername))
-//
-                    TextField( "ItemType", text: $itemtype)
-                        .autocapitalization(.none)
-                        .padding ()
-                        .frame (width: 300, height: 50) .background (Color.black.opacity (0.05))
-                        .cornerRadius (10)
-                        .border (.red, width: CGFloat(wrongPassword))
-                    
-                    TextField( "Cost", value: $cost, formatter: NumberFormatter())
-                        .keyboardType(.numberPad)
-                        .padding ()
-                        .frame (width: 300, height: 50) .background (Color.black.opacity (0.05))
-                        .cornerRadius (10)
-                        .border (.red, width: CGFloat(wrongPassword))
-                    
-                    DatePicker(
-                            "Bought Date",
-                            selection: $date,
-                            displayedComponents: [.date , .hourAndMinute]
-                        )
-                    
-                    VStack(alignment: .leading) {
-                        Text("Members")
-                            .font(.headline)
-                        ForEach($members, id: \.self) { member in
-                            Button(action: {
-                                if selectedMembers.contains(member.UserID.wrappedValue) {
-                                    selectedMembers.remove(member.UserID.wrappedValue)
-                                } else {
-                                    selectedMembers.insert(member.UserID.wrappedValue)
-                                }
-                            }) {
-                                HStack {
-                                    if selectedMembers.contains(member.UserID.wrappedValue) {
-                                        Image(systemName: "checkmark.square")
-                                            .foregroundColor(.blue)
-                                    } else {
-                                        Image(systemName: "square")
-                                    }
-                                    Text("\(member.UserNickname.wrappedValue)")
-                                        .font(.body)
-                                    TextField("Enter number", text: Binding(
-                                        get: {
-                                            String(member.UserID.wrappedValue)
-                                        },
-                                        set: {
-                                            if let value = Int($0) {
-                                                member.UserID.wrappedValue = value
-                                            }
+                    Form{
+                        Section(header: Text("項目細節")){
+                            
+                            TextField("項目名稱", text: $itemname)
+                                .autocapitalization(.none)
+                                .border (.red, width: CGFloat(wrongUsername))
+                            
+                            Picker(selection: $itemtype, label: Text("項目種類")) {
+                                ForEach(options, id: \.self) {
+                                    Text($0)
+                                }}
+                        
+                        
+                        HStack {
+                            Text ("花費")
+                            Spacer()
+                            TextField( "花費", value: $cost, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                                .padding ()
+                                .frame (width: 210, height: 35)
+                                .background (Color.black.opacity (0.05))
+                                .cornerRadius (10)
+                                .border (.red, width: CGFloat(wrongPassword))
+                        }
+                        
+                        DatePicker(
+                                "購買日期",
+                                selection: $date,
+                                displayedComponents: [.date , .hourAndMinute]
+                            )
+                            
+                        }
+                        
+                        Section(header: Text("分帳成員")) {
+                            VStack(alignment: .leading) {
+                                ForEach($members, id: \.self) { member in
+                                    HStack {
+                                        if selectedMembers.contains(member.UserID.wrappedValue) {
+                                            Image(systemName: "checkmark.square")
+                                                .foregroundColor(.blue)
+                                        } else {
+                                            Image(systemName: "square")
                                         }
-                                    ))
-                                    .keyboardType(.numberPad)
-                                    .frame(width: 100)
-                            }
+                                        Text("\(member.UserNickname.wrappedValue)")
+                                            .font(.body)
+                                        Spacer()
+                                        TextField("Enter number", text: Binding(
+                                            get: {
+                                                String(member.UserID.wrappedValue)
+                                            },
+                                            set: {
+                                                if let value = Int($0) {
+                                                    member.UserID.wrappedValue = value
+                                                }
+                                            }
+                                        ))
+                                        .keyboardType(.numberPad)
+                                        .padding ()
+                                        .frame (width: 210, height: 35)
+                                        .background (Color.black.opacity (0.05))
+                                        .cornerRadius (10)
+                                    }
+                                    .onTapGesture {
+                                        if selectedMembers.contains(member.UserID.wrappedValue) {
+                                            selectedMembers.remove(member.UserID.wrappedValue)
+                                        } else {
+                                            selectedMembers.insert(member.UserID.wrappedValue)
+                                        }
+//                                        print(selectedMembers)
+                                    }
+                                }
                             }
                         }
-                    }.padding()
 
-                    Button("Create") {
+                        
+                        
+                    }
+                    Button("建立") {
                         createrecord(name: itemname, type: itemtype, cost: cost,date:date)
                     }
                     .foregroundColor(.white)
@@ -104,10 +110,10 @@ struct CreateRecordView: View {
                     .background (Color.blue)
                     .cornerRadius (10)
                     
-                    
                 }
                 
             }
+            .navigationBarTitle("建立紀錄")
             .navigationDestination(
                  isPresented: $showLoginScreen) {
                      LedgerDetailView(ledger: ledger)
@@ -219,12 +225,4 @@ struct CreateRecordView: View {
         }.resume()
         
     }
-    
-    
 }
-
-//struct CreateRecordView_previews: PreviewProvider{
-//    static var previews: some View{
-//        CreateRecordView()
-//    }
-//}

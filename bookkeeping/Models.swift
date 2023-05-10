@@ -88,6 +88,15 @@ struct CreateRecord: Codable,Hashable{
     var BoughtDate : String
 }
 
+struct UpdateRecord: Codable,Hashable{
+    var RecordID : Int
+    var ItemName : String
+    var ItemType : String
+    var Cost : String
+    var Payby : Int
+    var BoughtDate : String
+}
+
 struct DeleteRecord: Codable, Hashable{
     var RecordID : Int
 }
@@ -110,7 +119,7 @@ struct LedgerAccess: Codable,Hashable{
 
 struct CreateLedgerAccessResponse: Codable, Hashable{
     var status : String
-    var ledger_access : LedgerAccess
+    var message : String
 }
 
 struct ChangeNickname: Codable, Hashable{
