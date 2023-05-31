@@ -80,21 +80,23 @@ struct GetRecords: Codable,Hashable{
 }
 
 struct CreateRecord: Codable,Hashable{
-    var LedgerID : Int
-    var ItemName : String
-    var ItemType : String
-    var Cost : Int
-    var Payby : Int
-    var BoughtDate : String
-}
-
-struct UpdateRecord: Codable,Hashable{
-    var RecordID : Int
+    var LedgerID : String
     var ItemName : String
     var ItemType : String
     var Cost : String
-    var Payby : Int
+    var Payby : String
     var BoughtDate : String
+    var ShareUsers : [String]
+}
+
+struct UpdateRecord: Codable,Hashable{
+    var RecordID : String
+    var ItemName : String
+    var ItemType : String
+    var Cost : String
+    var Payby : String
+    var BoughtDate : String
+    var ShareUsers : [String]
 }
 
 struct DeleteRecord: Codable, Hashable{
@@ -103,7 +105,7 @@ struct DeleteRecord: Codable, Hashable{
 
 struct GetRecordsResponse: Codable, Hashable{
     var status : String
-    var records : [GetRecords]
+    var record : [GetRecords]
 }
 
 struct CreateRecordResponse: Codable, Hashable{
@@ -155,4 +157,76 @@ struct GetLedgerInfoResponse: Codable, Hashable{
     var status : String
     var message : String
     var ledger_with_access:LedgerWithAccess
+}
+
+struct GetTotalEarnResponse: Codable, Hashable{
+    var status : String
+    var this_month_earning:String
+}
+
+struct GetTotalPayResponse: Codable, Hashable{
+    var status : String
+    var this_month_pay:String
+}
+
+struct GetItemTypeCostResponse: Codable, Hashable{
+    var status : String
+    var this_month_ItemType_cost:String
+}
+
+struct CreateReceipt: Codable, Hashable{
+    var RecordID : String
+    var StatusCode:String
+}
+
+struct GetReceipt: Codable, Hashable{
+    var ReceiptID : Int
+    var RecordID:Int
+    var BuyDate:String
+    var StatusCode:String
+}
+
+struct CreateReceiptResponse: Codable, Hashable{
+    var status : String
+    var receipt:GetReceipt
+}
+
+struct UpdateReceipt: Codable, Hashable{
+    var ReceiptID : String
+    var StatusCode:String
+}
+
+struct Sharepay: Codable, Hashable{
+    var UserID : Int
+    var UserName:String
+    var Share_money:String
+}
+
+struct Result: Codable, Hashable{
+    var sharepay : [Sharepay]
+}
+
+struct GetSharepayResponse: Codable, Hashable{
+    var status : String
+    var result:Result
+}
+
+struct DeleteReceipt: Codable, Hashable{
+    var ReceiptID : String
+}
+
+struct Receipts: Codable, Hashable{
+    var RecordID : Int
+    var StatusCode:String
+    var money:String
+}
+
+struct ReceiptsResult: Codable, Hashable{
+    var Receipts : [Receipts]
+}
+
+struct GetReceiptsResponse: Codable, Hashable{
+    var status : String
+    var issue : String
+    var result:ReceiptsResult
 }

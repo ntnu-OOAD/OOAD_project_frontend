@@ -12,16 +12,18 @@ struct LedgerDetailView: View {
     @State var isActive = false
     @State var showAdd = false
     @State var addMember = false
+    @State var receipt = false
+    @State var sharepayresult = false
     
-    @State var records = GetRecordsResponse(status: "", records: [])
+    @State var records = GetRecordsResponse(status: "", record: [])
     var body: some View {
         NavigationView{
             List{
-                ForEach(records.records, id: \.self) { record in
+                ForEach(records.record, id: \.self) { record in
                     HStack {
                         Text("\(record.ItemName)")
                         Spacer()
-                        Text("Cost: \(record.Cost)")
+                        Text("\(record.Cost)")
                         NavigationLink(destination: RecordDetailView(record:record,ledger: ledger),label: {Text("")})
                     }
                 }.onDelete(perform: deleteRecord)
@@ -29,7 +31,7 @@ struct LedgerDetailView: View {
                 
             }
             .onAppear(perform: loadRecords)
-            .navigationTitle("Records")
+            .navigationTitle("記錄列表")
             .listStyle(PlainListStyle())
             .navigationDestination(
                  isPresented: $showAdd) {
@@ -48,10 +50,16 @@ struct LedgerDetailView: View {
                 }),
                 trailing: Menu {
                             Button(action: { showAdd.toggle() }) {
-                                Label("Add record", systemImage: "plus.circle")
+                                Label("新增紀錄", systemImage: "plus.circle")
                             }
                     Button(action: { addMember.toggle() }) {
-                                Label("Edit member", systemImage: "person.2.badge.gearshape.fill")
+                                Label("編輯成員", systemImage: "person.2.badge.gearshape.fill")
+                            }
+                    Button(action: { receipt.toggle() }) {
+                                Label("發票對獎", systemImage: "newspaper")
+                            }
+                    Button(action: { sharepayresult.toggle() }) {
+                                Label("取得分帳結果", systemImage: "dollarsign.arrow.circlepath")
                             }
                         } label: {
                             Label("Menu", systemImage: "ellipsis.circle")
@@ -65,6 +73,10 @@ struct LedgerDetailView: View {
                  isPresented: $isActive) {
                      BottomNavView(selectedTab: 0)
                  }
+             .navigationDestination(
+                  isPresented: $sharepayresult) {
+                      SharepayResultView(ledger: ledger)
+                  }
         }.navigationBarBackButtonHidden(true)
     }
     
@@ -108,7 +120,7 @@ struct LedgerDetailView: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let encoder = JSONEncoder()
-        let record = DeleteRecord(RecordID: offsets.map { records.records[$0].RecordID}[0])
+        let record = DeleteRecord(RecordID: offsets.map { records.record[$0].RecordID}[0])
         let data = try? encoder.encode(record)
         request.httpBody = data
 
@@ -130,7 +142,7 @@ struct LedgerDetailView: View {
             }
         }.resume()
         
-        records.records.remove(atOffsets: offsets)
+        records.record.remove(atOffsets: offsets)
     }
 
 }

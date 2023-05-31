@@ -20,7 +20,7 @@ struct BottomNavView: View {
                 }
                 .tag(0)
             
-            Text("Tab 2")
+            StatisticView()
                 .tabItem {
                     Image(systemName: "chart.pie")
                     Text("統計資料")
@@ -33,13 +33,6 @@ struct BottomNavView: View {
                     Text("記帳")
                 }
                 .tag(2)
-            
-            Text("Tab 4")
-                .tabItem {
-                    Image(systemName: "newspaper")
-                    Text("發票兌換")
-                }
-                .tag(3)
             
             UserInfoView()
                 .tabItem {

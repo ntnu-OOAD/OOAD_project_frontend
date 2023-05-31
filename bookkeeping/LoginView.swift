@@ -2,8 +2,8 @@ import SwiftUI
 
 struct LoginView: View {
     @State var users = [User]()
-    @State var username = ""
-    @State var password = ""
+    @State var username = "123"
+    @State var password = "123"
     @State var wrongUsername = 0
     @State var wrongPassword = 0
     @State var showLoginScreen = false
@@ -94,8 +94,8 @@ struct LoginView: View {
     }
 }
 
-struct ContentView_previews: PreviewProvider{
-    static var previews: some View{
-        LoginView()
-    }
-}
+//struct ContentView_previews: PreviewProvider{
+//    static var previews: some View{
+//        LoginView()
+//    }
+//}
