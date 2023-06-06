@@ -77,6 +77,10 @@ struct LedgerDetailView: View {
                   isPresented: $sharepayresult) {
                       SharepayResultView(ledger: ledger)
                   }
+              .navigationDestination(
+                                     isPresented: $receipt) {
+                                         ReceiptListView(ledger: ledger)
+                                     }
         }.navigationBarBackButtonHidden(true)
     }
     

@@ -2,8 +2,8 @@ import SwiftUI
 
 struct LoginView: View {
     @State var users = [User]()
-    @State var username = "123"
-    @State var password = "123"
+    @State var username = "test2"
+    @State var password = "123123"
     @State var wrongUsername = 0
     @State var wrongPassword = 0
     @State var showLoginScreen = false

@@ -230,3 +230,13 @@ struct GetReceiptsResponse: Codable, Hashable{
     var issue : String
     var result:ReceiptsResult
 }
+
+struct DeleteMember: Codable, Hashable{
+    var LedgerID : String
+    var UserID : String
+}
+
+struct GetSharepayUserResponse: Codable, Hashable{
+    var status : String
+    var ShareUsers : [Int]
+}

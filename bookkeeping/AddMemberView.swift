@@ -13,8 +13,8 @@ struct AddMemberView: View {
     @State var wrongUsername = 0
     @State var wrongPassword = 0
     @State var showLoginScreen = false
-    @State private var selection = "Editer"
-    let roles = ["Owner","Editer","Viewer"]
+    @State private var selection = "Editor"
+    let roles = ["Owner","Editor","Viewer"]
     
     var body: some View {
         NavigationStack{

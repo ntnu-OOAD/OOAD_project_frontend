@@ -254,35 +254,36 @@ struct RecordDetailView: View {
 //        self.selectedMembers = Set(record.ShareUsers.compactMap { Int($0) })
     }
     func getSharepay() {
-        guard let url = URL(string: "\(API.RootUrl)/sharepay/get_sharepay_by_record/?RecordID=\(record.RecordID)") else {
-            print("API is down")
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-//                print("Response data:", String(data: data, encoding: .utf8) ?? "")
-                if let response = try? JSONDecoder().decode(GetSharepayResponse.self, from: data) {
-                    DispatchQueue.main.async {
-                        for item in response.result.sharepay {
-                            let userID = item.UserID
-                            selectedMembers.insert(userID)
-                        }
-                    }
-                    return
-                } else {
-                    print("Error decoding response data.")
-                }
-            } else {
-                print("No data received.")
+            guard let url = URL(string: "\(API.RootUrl)/sharepay/get_sharepay_user_by_record/?RecordID=\(record.RecordID)") else {
+                print("API is down")
+                return
             }
-        }.resume()
-//        self.selectedMembers = Set(record.ShareUsers.compactMap { Int($0) })
-    }
+
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+    //                print("Response data:", String(data: data, encoding: .utf8) ?? "")
+                    if let response = try? JSONDecoder().decode(GetSharepayUserResponse.self, from: data) {
+                        DispatchQueue.main.async {
+                            print(response)
+                            for item in response.ShareUsers {
+                                selectedMembers.insert(item)
+                            }
+                        }
+                        return
+                    } else {
+                        print("Error decoding response data.")
+                        print(response)
+                    }
+                } else {
+                    print("No data received.")
+                }
+            }.resume()
+    //        self.selectedMembers = Set(record.ShareUsers.compactMap { Int($0) })
+        }
     func updateRecord(){
         var type = selectedMoneyType
         if selectedMoneyType == "支出"{

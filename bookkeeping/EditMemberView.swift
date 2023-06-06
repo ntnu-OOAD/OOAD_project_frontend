@@ -67,10 +67,42 @@ struct EditMemberView: View {
     }
     
     func deleteMember(at offsets: IndexSet) {
+                
+                // Delete the member from your API here, if necessary
+            guard let url = URL(string: "\(API.RootUrl)/ledger_access/delete_ledger_access/") else {
+                print("API is down")
+                return
+            }
+
+            // Create a JSON encoder
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            let encoder = JSONEncoder()
+            let ledger = DeleteMember(LedgerID: String(ledger.LedgerID), UserID: String(offsets.map { members[$0].UserID}[0]))
+            let data = try? encoder.encode(ledger)
+            request.httpBody = data
+
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+    //                print("CreateLedgerResponse Response data:", String(data: data, encoding: .utf8) ?? "")
+                    if let response = try? JSONDecoder().decode(CreateLedgerAccessResponse.self, from: data) {
+                        if response.status == "success"{
+                            //print(response)
+                        } else{
+                            //print(response)
+                        }
+                        return
+                    } else {
+                        print("Error decoding response data.")
+                    }
+                } else {
+                    print("No data received.")
+                }
+            }.resume()
+
             members.remove(atOffsets: offsets)
-            // Delete the member from your API here, if necessary
-        
-        print(offsets)
-        }
-    
+            //print(offsets)
+            }
 }
